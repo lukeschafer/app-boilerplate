@@ -1,0 +1,36 @@
+{
+  "name": "microsaas-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n \"ui,api\" -c \"cyan,magenta\" \"npm run dev:ui\" \"npm run dev:api\"",
+    "dev:ui": "node node_modules/vite/bin/vite.js",
+    "dev:api": "node node_modules/wrangler/bin/wrangler.js dev src/api/index.ts --port 8787",
+    "build": "node node_modules/vite/bin/vite.js build",
+    "preview": "node node_modules/vite/bin/vite.js preview",
+    "setup": "node scripts/setup.js",
+    "branch-deploy": "node node_modules/@idpflare/cf-branch-wrangler/bin/index.js && node node_modules/wrangler/bin/wrangler.js deploy src/api/index.ts",
+    "deploy": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --remote && node node_modules/wrangler/bin/wrangler.js deploy src/api/index.ts",
+    "db:migrate:local": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --local",
+    "db:migrate:prod": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --remote"
+  },
+  "dependencies": {
+    "hono": "^4.7.0",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "@idpflare/cf-branch-wrangler": "^1.1.3",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "wrangler": "^3.107.3"
+  }
+}
