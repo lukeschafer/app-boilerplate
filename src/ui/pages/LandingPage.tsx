@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Zap, Database, Mail, Lock, ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Star, Layers } from 'lucide-react';
 import { BRANDING } from '../../config/branding';
 import { ProductScreenshot } from '../components/ProductScreenshot';
 
@@ -12,25 +12,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '5rem', paddingBottom: '4rem' }}>
       {/* Hero Section */}
-      <section style={{ textAlign: 'center', paddingTop: '3rem', maxWidth: '900px', margin: '0 auto', width: '100%' }}>
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.375rem 0.875rem',
-            backgroundColor: 'var(--bg-secondary)',
-            border: '1px solid var(--border)',
-            borderRadius: '9999px',
-            fontSize: '0.8125rem',
-            color: 'var(--text-secondary)',
-            marginBottom: '1.5rem',
-          }}
-        >
-          <Zap size={14} color="var(--accent)" />
-          <span>Cloudflare Edge Native Architecture</span>
-        </div>
-
+      <section style={{ textAlign: 'center', paddingTop: '4rem', maxWidth: '900px', margin: '0 auto', width: '100%' }}>
         <h1
           style={{
             fontSize: '3.25rem',
@@ -53,7 +35,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
             lineHeight: 1.6,
           }}
         >
-          {BRANDING.description} Zero cold starts, global SQLite data storage with Cloudflare D1, and seamless IDPFlare single sign-on.
+          {BRANDING.description}
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
@@ -67,82 +49,52 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
         </div>
       </section>
 
-      {/* Product Preview Screenshot Mockup */}
+      {/* Product Screenshot Mockup */}
       <section style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <ProductScreenshot />
       </section>
 
-      {/* Feature Highlights Grid */}
+      {/* 3 Placeholder Feature Cards */}
       <section style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.75rem' }}>Engineered for Performance</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>Built from the ground up with resource discipline and edge deployment.</p>
+          <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.75rem' }}>Core Capabilities</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>Simple, powerful tools designed for modern teams.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           <div className="card">
             <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Database size={20} color="var(--accent)" />
+              <Layers size={20} color="var(--accent)" />
             </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Cloudflare D1 Relational Engine</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 1</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Distributed SQLite SQL database running at the edge. Base64 media caching headers ensure sub-millisecond asset retrieval.
+              Insert Feature Subline Here
             </p>
           </div>
 
           <div className="card">
             <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Lock size={20} color="var(--accent)" />
+              <Star size={20} color="var(--accent)" />
             </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>IDPFlare Identity Integration</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 2</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Self-hosted OAuth 2.0 and OpenID Connect identity provider pairing PKCE authorization code flows directly on Workers.
+              Insert Feature Subline Here
             </p>
           </div>
 
           <div className="card">
             <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Shield size={20} color="var(--accent)" />
+              <ArrowRight size={20} color="var(--accent)" />
             </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Cloudflare Turnstile Security</h3>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 3</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Privacy-preserving bot detection with server-side validation and automated fallback test key support for local & branch builds.
-            </p>
-          </div>
-
-          <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Mail size={20} color="var(--accent)" />
-            </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Cloudflare Email Dispatch</h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Integrated support ticketing system utilizing Cloudflare Email Sending for outbound notifications and Email Routing for inbound queries.
-            </p>
-          </div>
-
-          <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Zap size={20} color="var(--accent)" />
-            </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Branch Deployment Tooling</h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Built-in support for <code>@idpflare/cf-branch-wrangler</code> for automatic preview infrastructure creation across git branches.
-            </p>
-          </div>
-
-          <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Check size={20} color="var(--accent)" />
-            </div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>GDPR Data Sovereignty</h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Compliant by design with built-in data export endpoints and Right to be Forgotten account deletion pipelines.
+              Insert Feature Subline Here
             </p>
           </div>
         </div>
       </section>
 
-      {/* Help CTA Banner */}
+      {/* Support CTA Banner */}
       <section style={{ maxWidth: '1100px', margin: '0 auto', width: '100%' }}>
         <div
           style={{
@@ -157,13 +109,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
             gap: '1rem',
           }}
         >
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Need Assistance or Custom Setup?</h2>
+          <h2 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Ready to get started with {BRANDING.appName}?</h2>
           <p style={{ color: 'var(--text-muted)', maxWidth: '500px', fontSize: '0.9375rem' }}>
-            Submit a support query directly through our integrated edge helpdesk.
+            Have questions or need assistance? Our support team is here to help.
           </p>
           <button className="btn-primary" onClick={onOpenHelp}>
-            <Mail size={16} />
-            <span>Open Support Request</span>
+            <span>Contact Support</span>
           </button>
         </div>
       </section>

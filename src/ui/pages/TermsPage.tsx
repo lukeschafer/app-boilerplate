@@ -18,23 +18,30 @@ export const TermsPage: React.FC = () => {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: 1.7, fontSize: '0.9375rem' }}>
         <div className="card">
-          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>1. Acceptance of Terms</h2>
+          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>1. Agreement to Terms</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            By accessing or utilizing services provided under {BRANDING.domain}, you agree to comply with these terms. If you do not accept these terms, you may not access the platform.
+            By registering for, accessing, or using {BRANDING.appName} services, you enter into a binding agreement with us and agree to be bound by these Terms of Service. If you do not agree to these terms, you must refrain from using the platform.
           </p>
         </div>
 
         <div className="card">
-          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>2. Use of Service</h2>
+          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>2. Account Security & Use</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            You are responsible for maintaining the security of your authentication tokens and for all activities conducted through your account. You agree not to misuse the service or attempt unauthorized access to edge resources.
+            You are responsible for maintaining the confidentiality of your account login credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use or security breach.
           </p>
         </div>
 
         <div className="card">
-          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>3. Service Level & Availability</h2>
+          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>3. Prohibited Conduct</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            {BRANDING.appName} is hosted on Cloudflare's global edge network. While we strive for 99.9% uptime, services are provided on an "as is" and "as available" basis.
+            You agree not to engage in any activity that interferes with or disrupts the application, including transmitting harmful code, attempting unauthorized access, or violating applicable regulations.
+          </p>
+        </div>
+
+        <div className="card">
+          <h2 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>4. Termination</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            We reserve the right to suspend or terminate your account and access to the service at our sole discretion, without prior notice, for conduct that violates these Terms of Service or is harmful to other users.
           </p>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { BRANDING } from '../../config/branding';
 import { Turnstile } from './Turnstile';
 
 interface HelpModalProps {
@@ -22,8 +21,8 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!message || !email || !name) {
-      setError('Please fill in all fields.');
+    if (!message || (!currentUser && (!email || !name))) {
+      setError('Please fill in all required fields.');
       return;
     }
 
@@ -45,13 +44,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to submit request');
+        throw new Error(data.error || 'Failed to submit support request');
       }
 
       setSuccess(true);
       setMessage('');
     } catch (err: any) {
-      setError(err.message || 'An error occurred. Please try again.');
+      setError(err.message || 'An error occurred while submitting your request.');
     } finally {
       setLoading(false);
     }
@@ -62,9 +61,9 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Request Assistance</h3>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Contact Support</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              Send a direct query to our support team at {BRANDING.supportEmail}
+              Submit your inquiry to our customer service team.
             </p>
           </div>
           <button
@@ -78,9 +77,9 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
         {success ? (
           <div style={{ textAlign: 'center', padding: '2rem 0' }}>
             <CheckCircle size={48} color="var(--accent)" style={{ marginBottom: '1rem' }} />
-            <h4 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Message Dispatched</h4>
+            <h4 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Request Submitted</h4>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              Your inquiry has been logged and forwarded. We will respond shortly.
+              Your inquiry has been received. Our support team will review it and get back to you shortly.
             </p>
             <button className="btn-primary" onClick={() => { setSuccess(false); onClose(); }}>
               Close
@@ -154,7 +153,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
               <textarea
                 className="input-field"
                 rows={4}
-                placeholder="Describe your question or issue in detail..."
+                placeholder="Describe your question or request in detail..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
@@ -169,7 +168,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
               </button>
               <button type="submit" className="btn-primary" disabled={loading}>
                 <Send size={16} />
-                <span>{loading ? 'Sending...' : 'Send Request'}</span>
+                <span>{loading ? 'Sending...' : 'Submit Request'}</span>
               </button>
             </div>
           </form>

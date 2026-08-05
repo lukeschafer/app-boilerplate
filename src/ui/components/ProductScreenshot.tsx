@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Shield, Cpu, Database, Server, Check } from 'lucide-react';
+import { Users, TrendingUp, ShieldCheck, Check } from 'lucide-react';
 import { BRANDING } from '../../config/branding';
 
 export const ProductScreenshot: React.FC = () => {
@@ -44,9 +44,9 @@ export const ProductScreenshot: React.FC = () => {
         </div>
       </div>
 
-      {/* Mock Product Workspace Content */}
+      {/* Mock SaaS Product Workspace Content */}
       <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-        {/* Header KPI Row */}
+        {/* KPI Row */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
           <div
             style={{
@@ -57,12 +57,12 @@ export const ProductScreenshot: React.FC = () => {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Global Latency</span>
-              <Activity size={16} color="var(--accent)" />
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Active Users</span>
+              <Users size={16} color="var(--accent)" />
             </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>18 ms</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>1,280</div>
             <div style={{ fontSize: '0.75rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-              <Check size={12} /> Edge Network Active
+              <TrendingUp size={12} /> +14% this month
             </div>
           </div>
 
@@ -75,11 +75,13 @@ export const ProductScreenshot: React.FC = () => {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>D1 Database Query</span>
-              <Database size={16} color="var(--accent)" />
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Monthly Recurring</span>
+              <TrendingUp size={16} color="var(--accent)" />
             </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>1.2 ms</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>SQLite Edge Replica</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>$12,450</div>
+            <div style={{ fontSize: '0.75rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <TrendingUp size={12} /> +8% vs last month
+            </div>
           </div>
 
           <div
@@ -91,15 +93,17 @@ export const ProductScreenshot: React.FC = () => {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Security Status</span>
-              <Shield size={16} color="var(--accent)" />
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Platform Status</span>
+              <ShieldCheck size={16} color="var(--accent)" />
             </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>Verified</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Turnstile & OIDC Protected</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>Operational</div>
+            <div style={{ fontSize: '0.75rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <Check size={12} /> All Systems Normal
+            </div>
           </div>
         </div>
 
-        {/* Mock Data Table / Log Output */}
+        {/* Mock Activity Log */}
         <div
           style={{
             padding: '1.25rem',
@@ -109,15 +113,15 @@ export const ProductScreenshot: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>Active Edge Workers</span>
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Region: Global Anycast</span>
+            <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>Recent Activity</span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Live Feed</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.8125rem' }}>
             {[
-              { id: 'wrk_8912', route: '/api/help', status: '200 OK', duration: '4ms' },
-              { id: 'wrk_4421', route: '/api/gdpr/export', status: '200 OK', duration: '9ms' },
-              { id: 'wrk_1190', route: '/api/auth/me', status: '200 OK', duration: '3ms' },
+              { user: 'Sarah Jenkins', event: 'Upgraded to Pro Plan', time: '2 mins ago' },
+              { user: 'Alex Rivera', event: 'Created new project workspace', time: '15 mins ago' },
+              { user: 'Michael Chen', event: 'Completed team onboarding', time: '1 hour ago' },
             ].map((row, idx) => (
               <div
                 key={idx}
@@ -131,13 +135,10 @@ export const ProductScreenshot: React.FC = () => {
                 }}
               >
                 <div style={{ display: 'flex', gap: '0.75rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>{row.id}</span>
-                  <span style={{ fontWeight: 500 }}>{row.route}</span>
+                  <span style={{ fontWeight: 500 }}>{row.user}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>{row.event}</span>
                 </div>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <span style={{ color: '#10b981' }}>{row.status}</span>
-                  <span style={{ color: 'var(--text-muted)' }}>{row.duration}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>{row.time}</span>
               </div>
             ))}
           </div>

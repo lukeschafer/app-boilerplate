@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenHelp }) => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
               <li>
                 <button onClick={() => onNavigate('/privacy')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                  Privacy Policy (GDPR)
+                  Privacy Policy
                 </button>
               </li>
               <li>
@@ -94,10 +94,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenHelp }) => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
               <li>
                 <button onClick={onOpenHelp} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
-                  Contact Helpdesk
+                  Submit Support Ticket
                 </button>
               </li>
-              <li style={{ color: 'var(--text-muted)' }}>{BRANDING.supportEmail}</li>
             </ul>
           </div>
         </div>
@@ -117,7 +116,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenHelp }) => {
         }}
       >
         <span>&copy; {new Date().getFullYear()} {BRANDING.appName}. All rights reserved.</span>
-        <span>Built natively on Cloudflare Edge</span>
       </div>
     </footer>
   );

@@ -1,23 +1,21 @@
 import React from 'react';
-import { Layers, HelpCircle, Sun, Moon, User } from 'lucide-react';
+import { Layers, HelpCircle, User } from 'lucide-react';
 import { BRANDING } from '../../config/branding';
 
 interface NavbarProps {
   currentPath: string;
   onNavigate: (path: string) => void;
-  themeMode: 'light' | 'dark';
-  onToggleTheme: () => void;
   onOpenHelp: () => void;
   currentUser?: { name: string } | null;
+  onLogin: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentPath,
   onNavigate,
-  themeMode,
-  onToggleTheme,
   onOpenHelp,
   currentUser,
+  onLogin,
 }) => {
   return (
     <header
@@ -105,23 +103,27 @@ export const Navbar: React.FC<NavbarProps> = ({
               cursor: 'pointer',
             }}
           >
-            Privacy
+            Privacy Policy
+          </button>
+          <button
+            onClick={() => onNavigate('/terms')}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: currentPath === '/terms' ? 'var(--text-primary)' : 'var(--text-muted)',
+              fontWeight: currentPath === '/terms' ? 600 : 400,
+              fontSize: '0.875rem',
+              cursor: 'pointer',
+            }}
+          >
+            Terms
           </button>
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <button
-            onClick={onToggleTheme}
-            className="btn-secondary"
-            style={{ padding: '0.5rem', borderRadius: 'var(--radius-sm)' }}
-            title="Toggle theme mode"
-          >
-            {themeMode === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
-
           <button onClick={onOpenHelp} className="btn-secondary">
             <HelpCircle size={16} />
-            <span>Help</span>
+            <span>Support</span>
           </button>
 
           {currentUser ? (
@@ -130,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>{currentUser.name}</span>
             </button>
           ) : (
-            <button onClick={() => onNavigate('/dashboard')} className="btn-primary">
+            <button onClick={onLogin} className="btn-primary">
               <span>Sign In</span>
             </button>
           )}
