@@ -23,7 +23,7 @@ export const TermsPage: React.FC = () => {
             These Terms of Service ("Terms", "Agreement") constitute a legally binding agreement between you ("User", "you", "your") and <strong>{BRANDING.appName}</strong> ("Company", "we", "us", "our"), regarding your access to and use of the website <strong>{BRANDING.domain}</strong> and all related applications, software, tools, and services (collectively, the "Service").
           </p>
           <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-            By registering an account, accessing, or using any part of the Service, you confirm that you have read, understood, and agree to be bound by all terms, conditions, and disclaimers set forth herein. If you do not agree, you must discontinue use of the Service immediately.
+            By registering an account, purchasing a license, accessing, or using any part of the Service, you confirm that you have read, understood, and agree to be bound by all terms, conditions, and disclaimers set forth herein. If you do not agree, you must discontinue use of the Service immediately.
           </p>
         </section>
 
@@ -61,21 +61,34 @@ export const TermsPage: React.FC = () => {
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>5. User Responsibility & Data Backup Waiver</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>5. One-Time Purchases, Perpetual Licenses & Service Shutdown</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            If you purchase a one-time fee, lifetime access plan, or perpetual license to the Service, such purchase grants you access to the Service strictly as it exists and is made available by the Company from time to time during its operational lifetime.
+          </p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
+            The Company retains the absolute, unrestricted right, in its sole discretion, to modify, suspend, deprecate, shutdown, or permanently cease operation and maintenance of the Service at any time, for any reason, with or without prior notice.
+          </p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontWeight: 600 }}>
+            YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT IN THE EVENT THE COMPANY ELECTS TO SHUT DOWN OR CEASE OPERATION OF THE SERVICE, TERMINATE PERPETUAL LICENSE ACCESS, OR DISCONTINUE PRODUCT SUPPORT, THE COMPANY SHALL HAVE NO LIABILITY, OBLIGATION, OR DUTY WHATSOEVER TO REFUND ANY PORTION OF THE PURCHASE PRICE, PROVIDE CONTINUED HOSTING OR CODE MAINTENANCE, OR PAY ANY COMPENSATION OR DAMAGES OF ANY KIND.
+          </p>
+        </section>
+
+        <section className="card">
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>6. User Responsibility & Data Backup Waiver</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
             You are solely responsible for your use of the Service, the security of your login credentials, and for maintaining independent off-site backups of all data, files, and content transmitted to or stored within the Service. You acknowledge that we assume no responsibility or liability for data loss, data corruption, hardware failure, or unauthorized account access resulting from your failure to maintain independent safeguards.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>6. Indemnification & Hold Harmless</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>7. Indemnification & Hold Harmless</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
             You agree to defend, indemnify, release, and hold harmless the Company, its owners, operators, affiliates, officers, directors, employees, and agents from and against any and all third-party claims, liabilities, losses, damages, penalties, costs, and legal fees arising out of or related to: (a) your access to or use of the Service; (b) your violation of these Terms; (c) your violation of any third-party right; or (d) any data or content uploaded through your account.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>7. Account Security & Acceptable Use</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>8. Account Security & Acceptable Use</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
             You agree not to misuse the Service or attempt unauthorized access. Prohibited activities include:
           </p>
@@ -87,21 +100,21 @@ export const TermsPage: React.FC = () => {
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>8. Subscriptions, Fees & Non-Refundability</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>9. Subscriptions, Fees & Non-Refundability</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            Subscription fees are billed in advance on a recurring schedule based on your selected plan. All fees paid are non-refundable and non-creditable, regardless of account usage, subscription cancellation, or service modification.
+            Subscription and license fees are billed in advance. All fees paid are non-refundable and non-creditable, regardless of account usage, subscription cancellation, or service modification or shutdown.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>9. Governing Law & Dispute Resolution</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>10. Governing Law & Dispute Resolution</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
             These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the Company operates, without giving effect to conflicts of laws principles. You agree to resolve any dispute or claim arising out of these Terms through binding individual arbitration, waiving any right to participate in class actions or jury trials.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>10. Severability & Entire Agreement</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>11. Severability & Entire Agreement</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
             If any provision of these Terms is deemed invalid or unenforceable, that provision shall be enforced to the maximum extent permissible, and the remaining provisions shall remain in full force and effect. These Terms constitute the complete agreement between you and the Company concerning the Service.
           </p>
