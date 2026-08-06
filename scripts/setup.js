@@ -28,35 +28,43 @@ function log(type, msg) {
 
 async function runSetup() {
   console.log('====================================================');
-  console.log('  MicroSaaS Boilerplate Project Setup Wizard');
+  console.log('  MicroSaaS Application Configuration Wizard');
   console.log('====================================================\n');
 
-  const appName = await ask('1. Enter Application Display Name', 'Lumina App');
+  const appName = await ask('1. Enter Application Display Name', 'My App');
   const appSlug = appName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  const domain = await ask('2. Enter Domain', `${appSlug}.com`);
-  const supportEmail = await ask('3. Enter Target Support Email', `support@${domain}`);
+  const tagline = await ask('2. Enter Application Tagline', 'The complete platform for your modern workflow');
+  const description = await ask('3. Enter Short App Description', 'Streamline your operations, manage data securely, and optimize your business from one unified platform.');
+  const domain = await ask('4. Enter Domain Name', `${appSlug}.com`);
+  const supportEmail = await ask('5. Enter Target Support Email (backend notification recipient)', `support@${domain}`);
 
-  console.log('\nAvailable Color Palettes:');
-  console.log('  1) slate    - Slate & Indigo (Default)');
-  console.log('  2) emerald  - Emerald & Mint');
-  console.log('  3) obsidian - Obsidian & Steel');
-  console.log('  4) sunset   - Sunset & Amber');
-  console.log('  5) oceanic  - Oceanic & Teal');
+  console.log('\nAvailable Color Palettes (Slate Base with Custom Accents):');
+  console.log('  1) [ #6366f1 ] slate-indigo   - Slate & Deep Indigo (Default)');
+  console.log('  2) [ #2563eb ] slate-sapphire - Slate & Sapphire Blue');
+  console.log('  3) [ #10b981 ] slate-emerald  - Slate & Forest Emerald');
+  console.log('  4) [ #d97706 ] slate-amber    - Slate & Warm Amber');
+  console.log('  5) [ #8b5cf6 ] slate-violet   - Slate & Royal Violet');
 
-  const paletteChoice = await ask('4. Select Color Palette (1-5 or name)', 'slate');
-  const paletteMap = { '1': 'slate', '2': 'emerald', '3': 'obsidian', '4': 'sunset', '5': 'oceanic' };
+  const paletteChoice = await ask('6. Select Palette (1-5 or key)', 'slate-indigo');
+  const paletteMap = {
+    '1': 'slate-indigo',
+    '2': 'slate-sapphire',
+    '3': 'slate-emerald',
+    '4': 'slate-amber',
+    '5': 'slate-violet',
+  };
   const paletteId = paletteMap[paletteChoice] || paletteChoice;
 
-  const defaultMode = await ask('5. Default Theme Mode (light/dark)', 'dark');
+  const defaultMode = await ask('7. Default Theme Mode (light/dark)', 'dark');
 
-  console.log('\nTurnstile Security Configuration:');
-  console.log('  (Press Enter to keep standard Cloudflare testing keys for dev/branch deployments)');
-  const turnstileSiteKey = await ask('6. Turnstile Site Key', '1x00000000000000000000AA');
-  const turnstileSecretKey = await ask('7. Turnstile Secret Key', '1x0000000000000000000000000000000AA');
+  console.log('\nSecurity & Verification Configuration:');
+  console.log('  (Press Enter to keep standard Cloudflare testing keys for local dev/branches)');
+  const turnstileSiteKey = await ask('8. Cloudflare Turnstile Site Key', '1x00000000000000000000AA');
+  const turnstileSecretKey = await ask('9. Cloudflare Turnstile Secret Key', '1x0000000000000000000000000000000AA');
 
   rl.close();
 
-  log('INFO', 'Updating branding configuration...');
+  log('INFO', 'Updating branding configuration file...');
   const brandingPath = path.join(ROOT, 'src', 'config', 'branding.ts');
   const brandingContent = `import { PALETTES, Palette } from '../theme/palettes';
 
@@ -76,10 +84,10 @@ export interface BrandingConfig {
 }
 
 export const BRANDING: BrandingConfig = {
-  appName: '${appName}',
+  appName: '${appName.replace(/'/g, "\\'")}',
   appSlug: '${appSlug}',
-  tagline: 'Streamlined edge-native platform',
-  description: 'A minimalist, high-performance solution built on Cloudflare Workers and D1.',
+  tagline: '${tagline.replace(/'/g, "\\'")}',
+  description: '${description.replace(/'/g, "\\'")}',
   domain: '${domain}',
   supportEmail: '${supportEmail}',
   paletteId: '${paletteId}',
@@ -91,7 +99,7 @@ export const BRANDING: BrandingConfig = {
 };
 
 export function applyTheme(paletteId: string = BRANDING.paletteId, mode: 'light' | 'dark' = BRANDING.defaultMode) {
-  const palette: Palette = PALETTES[paletteId] || PALETTES['slate'];
+  const palette: Palette = PALETTES[paletteId] || PALETTES['slate-indigo'];
   const colors = palette[mode];
   const root = document.documentElement;
 
@@ -109,7 +117,7 @@ export function applyTheme(paletteId: string = BRANDING.paletteId, mode: 'light'
 `;
   fs.writeFileSync(brandingPath, brandingContent);
 
-  log('INFO', 'Updating package.json...');
+  log('INFO', 'Updating package.json project name...');
   const pkgPath = path.join(ROOT, 'package.json');
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
   pkg.name = appSlug;
@@ -122,7 +130,7 @@ export function applyTheme(paletteId: string = BRANDING.paletteId, mode: 'light'
   wranglerContent = wranglerContent.replace(/"database_name":\s*"[^"]+"/, `"database_name": "${appSlug}-db"`);
   fs.writeFileSync(wranglerPath, wranglerContent);
 
-  log('INFO', 'Updating idpflare.md and README.md...');
+  log('INFO', 'Updating documentation files...');
   const readmePath = path.join(ROOT, 'README.md');
   if (fs.existsSync(readmePath)) {
     let readme = fs.readFileSync(readmePath, 'utf8');
@@ -154,8 +162,8 @@ export function applyTheme(paletteId: string = BRANDING.paletteId, mode: 'light'
   }
 
   console.log('\n====================================================');
-  log('SUCCESS', `Setup complete for ${appName}!`);
-  console.log('  Run "npm run dev" to launch UI and API locally.');
+  log('SUCCESS', `Configuration setup complete for ${appName}!`);
+  console.log('  Run "npm run dev" to launch your application.');
   console.log('====================================================\n');
 }
 
