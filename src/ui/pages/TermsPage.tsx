@@ -8,7 +8,7 @@ export const TermsPage: React.FC = () => {
       <div style={{ marginBottom: '2.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', color: 'var(--accent)', marginBottom: '0.5rem' }}>
           <FileText size={24} />
-          <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>Terms of Service & User Agreement</span>
+          <span style={{ fontWeight: 600, fontSize: '0.875rem' }}>Legal Agreement & Terms of Use</span>
         </div>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>Terms of Service</h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9375rem' }}>
@@ -20,102 +20,90 @@ export const TermsPage: React.FC = () => {
         <section className="card">
           <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>1. Agreement & Acceptance of Terms</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            These Terms of Service ("Terms", "Agreement") constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("User", "you"), and <strong>{BRANDING.appName}</strong> ("Company", "we", "us", "our"), concerning your access to and use of the website located at <strong>{BRANDING.domain}</strong> and all related applications, tools, and services (collectively, the "Service").
+            These Terms of Service ("Terms", "Agreement") constitute a legally binding agreement between you ("User", "you", "your") and <strong>{BRANDING.appName}</strong> ("Company", "we", "us", "our"), regarding your access to and use of the website <strong>{BRANDING.domain}</strong> and all related applications, software, tools, and services (collectively, the "Service").
           </p>
           <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-            By registering an account, accessing, or using any part of the Service, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree with all of these Terms, you are expressly prohibited from using the Service and must discontinue use immediately.
+            By registering an account, accessing, or using any part of the Service, you confirm that you have read, understood, and agree to be bound by all terms, conditions, and disclaimers set forth herein. If you do not agree, you must discontinue use of the Service immediately.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>2. Account Registration & Security</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-            To access certain features of the Service, you may be required to register for an account. By creating an account, you agree to:
-          </p>
-          <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <li>Provide accurate, current, and complete information during registration.</li>
-            <li>Maintain and promptly update your account details to keep them accurate and complete.</li>
-            <li>Safeguard your authentication credentials and accept full responsibility for all activities occurring under your account.</li>
-            <li>Notify us immediately of any unauthorized access, security breach, or compromise of account credentials.</li>
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>3. Acceptable Use & Conduct Restrictions</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-            You agree to use the Service strictly for lawful business and personal purposes. You agree **not** to engage in any of the following prohibited actions:
-          </p>
-          <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <li>Systematically retrieve data or content from the Service to create a competing product, service, or database without prior written consent.</li>
-            <li>Attempt to bypass, disable, or interfere with security features, access controls, or rate-limiting mechanisms of the Service.</li>
-            <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code or underlying architecture of the Service.</li>
-            <li>Transmit unsolicited commercial emails, automated spam, viruses, trojans, or malicious code designed to disrupt system infrastructure.</li>
-            <li>Use the Service in any manner that violates applicable local, state, national, or international laws or regulations.</li>
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>4. Subscriptions, Pricing & Payment Terms</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
-            Certain tiers of the Service are offered on a paid subscription basis. By purchasing a subscription tier, you agree to the following pricing terms:
-          </p>
-          <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <li><strong>Billing Cycle:</strong> Subscription fees are billed in advance on a recurring monthly or annual basis depending on your selected billing plan.</li>
-            <li><strong>Automatic Renewal:</strong> Subscriptions automatically renew at the end of each billing period unless cancelled prior to the renewal date via your account dashboard.</li>
-            <li><strong>Taxes & Fees:</strong> You are responsible for all applicable taxes, duties, and government assessments associated with your purchase.</li>
-            <li><strong>Refund Policy:</strong> All fees paid are non-refundable except where explicitly required by mandatory applicable law or specified in a signed service agreement.</li>
-          </ul>
-        </section>
-
-        <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>5. Intellectual Property Rights & Ownership</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>2. Provision of Service on a "Best Efforts" Basis</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            The Service, including all software code, interface design, logos, trademarks, text, graphics, and underlying technology, is the exclusive property of {BRANDING.appName} and its licensors, protected by copyright, trademark, and intellectual property laws. Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Service for your authorized purposes.
+            The Service is provided strictly on a commercial <strong>"best efforts"</strong> basis. While we endeavor to maintain system functionality and operational stability, we make no promises, guarantees, or commitments regarding service uptime, continuous availability, response speeds, data processing timeliness, or error-free operation. We reserve the right to modify, suspend, restrict, or discontinue any portion of the Service at any time without prior notice or liability.
+          </p>
+        </section>
+
+        <section className="card">
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>3. Absolute Disclaimer of Warranties</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICE IS PROVIDED ENTIRELY ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS. THE COMPANY EXPRESSLY DISCLAIMS ALL WARRANTIES, REPRESENTATIONS, AND CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO:
+          </p>
+          <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.75rem' }}>
+            <li>IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</li>
+            <li>WARRANTIES THAT THE SERVICE WILL MEET YOUR REQUIREMENTS OR EXPECTATIONS.</li>
+            <li>WARRANTIES THAT OPERATION WILL BE UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE, OR FREE FROM BUGS, VIRUSES, OR ERROR.</li>
+            <li>WARRANTIES REGARDING THE RELIABILITY, ACCURACY, OR BACKUP SAFETY OF ANY DATA STORED OR PROCESSED ON THE SERVICE.</li>
+          </ul>
+        </section>
+
+        <section className="card">
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>4. Total Release & Limitation of Liability</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS OWNERS, DIRECTORS, OFFICERS, EMPLOYEES, CONTRACTORS, AGENTS, AFFILIATES, OR SUPPLIERS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR RELIANCE DAMAGES WHATSOEVER.
           </p>
           <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
-            You retain full ownership rights over any data, images, or content you submit to the Service. By uploading content, you grant us a worldwide, royalty-free license to host, process, and display your data strictly as necessary to provide the Service to you.
+            THIS LIMITATION INCLUDES, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, REVENUE, GOODWILL, DATA, SAVINGS, BUSINESS OPPORTUNITIES, OR BUSINESS INTERRUPTION, AS WELL AS ANY DAMAGES RESULTING FROM DATA LOSS, DATA CORRUPTION, SYSTEM FAILURE, SECURITY BREACH, UNSCHEDULED DOWNTIME, OR UNAUTHORIZED ACCESS, REGARDLESS OF CAUSE AND UNDER ANY THEORY OF LIABILITY (CONTRACT, TORT, STRICT LIABILITY, OR OTHERWISE), EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+          </p>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem' }}>
+            IN ANY EVENT, THE AGGREGATE CUMULATIVE LIABILITY OF THE COMPANY FOR ALL CLAIMS RELATING TO THE SERVICE SHALL BE STRICTLY LIMITED TO THE LESSER OF: (A) THE TOTAL AMOUNT PAID BY YOU TO THE COMPANY IN THE THIRTY (30) DAYS IMMEDIATELY PRECEDING THE CLAIM, OR (B) FIFTY US DOLLARS ($50.00 USD).
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>6. Service Availability & Modifications</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>5. User Responsibility & Data Backup Waiver</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            We continuously improve our platform and reserve the right to update, modify, suspend, or discontinue any feature or aspect of the Service at any time without prior notice. While we strive to maintain 99.9% uptime availability, we do not guarantee uninterrupted access and shall not be liable for temporary network downtime, scheduled maintenance, or circumstances beyond our reasonable control.
+            You are solely responsible for your use of the Service, the security of your login credentials, and for maintaining independent off-site backups of all data, files, and content transmitted to or stored within the Service. You acknowledge that we assume no responsibility or liability for data loss, data corruption, hardware failure, or unauthorized account access resulting from your failure to maintain independent safeguards.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>7. Disclaimer of Warranties</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>6. Indemnification & Hold Harmless</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE ERROR-FREE, SECURE, OR UNINTERRUPTED.
+            You agree to defend, indemnify, release, and hold harmless the Company, its owners, operators, affiliates, officers, directors, employees, and agents from and against any and all third-party claims, liabilities, losses, damages, penalties, costs, and legal fees arising out of or related to: (a) your access to or use of the Service; (b) your violation of these Terms; (c) your violation of any third-party right; or (d) any data or content uploaded through your account.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>8. Limitation of Liability</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>7. Account Security & Acceptable Use</h2>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+            You agree not to misuse the Service or attempt unauthorized access. Prohibited activities include:
+          </p>
+          <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <li>Attempting to probe, scan, test vulnerabilities, or breach security access controls.</li>
+            <li>Engaging in automated abuse, scraping, denial-of-service attacks, or transmitting malicious software.</li>
+            <li>Using the Service for unlawful, fraudulent, or harmful purposes.</li>
+          </ul>
+        </section>
+
+        <section className="card">
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>8. Subscriptions, Fees & Non-Refundability</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL {BRANDING.appName}, ITS DIRECTORS, OFFICERS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES—INCLUDING LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION—ARISING OUT OF OR IN CONNECTION WITH YOUR ACCESS TO OR USE OF THE SERVICE, REGARDLESS OF THE THEORY OF LIABILITY.
+            Subscription fees are billed in advance on a recurring schedule based on your selected plan. All fees paid are non-refundable and non-creditable, regardless of account usage, subscription cancellation, or service modification.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>9. Indemnification</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>9. Governing Law & Dispute Resolution</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            You agree to defend, indemnify, and hold harmless {BRANDING.appName} and its officers, directors, employees, and agents from and against any claims, liabilities, damages, judgments, awards, losses, costs, or expenses (including reasonable legal fees) arising out of or relating to your violation of these Terms or your unauthorized use of the Service.
+            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the Company operates, without giving effect to conflicts of laws principles. You agree to resolve any dispute or claim arising out of these Terms through binding individual arbitration, waiving any right to participate in class actions or jury trials.
           </p>
         </section>
 
         <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>10. Governing Law & Dispute Resolution</h2>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>10. Severability & Entire Agreement</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the Company is registered, without regard to its conflict of law principles. Any dispute arising out of these Terms shall be submitted to confidential arbitration or the competent courts of that jurisdiction.
-          </p>
-        </section>
-
-        <section className="card">
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>11. Amendments & Termination</h2>
-          <p style={{ color: 'var(--text-secondary)' }}>
-            We reserve the right to amend these Terms at any time by posting updated terms on {BRANDING.domain}. Your continued use of the Service following such posting constitutes acceptance of the modified Terms. We reserve the right to terminate or suspend your account access immediately for any breach of these Terms.
+            If any provision of these Terms is deemed invalid or unenforceable, that provision shall be enforced to the maximum extent permissible, and the remaining provisions shall remain in full force and effect. These Terms constitute the complete agreement between you and the Company concerning the Service.
           </p>
         </section>
       </div>
