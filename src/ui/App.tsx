@@ -21,6 +21,28 @@ export const App: React.FC = () => {
     applyTheme(BRANDING.paletteId, themeMode);
   }, [themeMode]);
 
+  useEffect(() => {
+    // Dynamic page title management for SEO & browser navigation
+    switch (currentPath) {
+      case '/pricing':
+        document.title = `Transparent Pricing - ${BRANDING.appName}`;
+        break;
+      case '/privacy':
+        document.title = `Privacy Policy - ${BRANDING.appName}`;
+        break;
+      case '/terms':
+        document.title = `Terms of Service - ${BRANDING.appName}`;
+        break;
+      case '/dashboard':
+        document.title = `Dashboard - ${BRANDING.appName}`;
+        break;
+      case '/':
+      default:
+        document.title = `${BRANDING.appName} - ${BRANDING.tagline}`;
+        break;
+    }
+  }, [currentPath]);
+
   const handleNavigate = (path: string) => {
     setCurrentPath(path);
     window.history.pushState({}, '', path);

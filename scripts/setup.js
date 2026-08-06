@@ -130,6 +130,15 @@ export function applyTheme(paletteId: string = BRANDING.paletteId, mode: 'light'
   wranglerContent = wranglerContent.replace(/"database_name":\s*"[^"]+"/, `"database_name": "${appSlug}-db"`);
   fs.writeFileSync(wranglerPath, wranglerContent);
 
+  log('INFO', 'Updating index.html SEO metadata...');
+  const indexPath = path.join(ROOT, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    let indexHtml = fs.readFileSync(indexPath, 'utf8');
+    indexHtml = indexHtml.replace(/<title>.*<\/title>/, `<title>${appName} - ${tagline}</title>`);
+    indexHtml = indexHtml.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${description}" />`);
+    fs.writeFileSync(indexPath, indexHtml);
+  }
+
   log('INFO', 'Ensuring build directory (dist) exists for Wrangler assets binding...');
   const distPath = path.join(ROOT, 'dist');
   if (!fs.existsSync(distPath)) {
