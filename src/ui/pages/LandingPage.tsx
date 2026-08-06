@@ -63,8 +63,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Layers size={20} color="var(--accent)" />
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <Layers size={32} color="var(--accent)" />
             </div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 1</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
@@ -73,8 +73,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
           </div>
 
           <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Star size={20} color="var(--accent)" />
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <Star size={32} color="var(--accent)" />
             </div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 2</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
@@ -83,8 +83,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, onOpenHelp
           </div>
 
           <div className="card">
-            <div style={{ width: '40px', height: '40px', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <ArrowRight size={20} color="var(--accent)" />
+            <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center' }}>
+              <ArrowRight size={32} color="var(--accent)" />
             </div>
             <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '0.5rem' }}>Feature 3</h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
