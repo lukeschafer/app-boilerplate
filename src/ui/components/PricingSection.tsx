@@ -173,6 +173,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onNavigate, show
           </button>
         </div>
       </div>
+
+      {/* Footnote Link */}
+      <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+        * See{' '}
+        <button
+          onClick={() => onNavigate('/terms')}
+          style={{ background: 'none', border: 'none', color: 'var(--text-muted)', textDecoration: 'underline', cursor: 'pointer', padding: 0, fontSize: '0.75rem' }}
+        >
+          Terms of Service
+        </button>{' '}
+        for lifetime license terms and operational conditions.
+      </div>
     </div>
   );
 };
