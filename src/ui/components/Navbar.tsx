@@ -92,32 +92,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Pricing
           </button>
-          <button
-            onClick={() => onNavigate('/privacy')}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: currentPath === '/privacy' ? 'var(--text-primary)' : 'var(--text-muted)',
-              fontWeight: currentPath === '/privacy' ? 600 : 400,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-            }}
-          >
-            Privacy Policy
-          </button>
-          <button
-            onClick={() => onNavigate('/terms')}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: currentPath === '/terms' ? 'var(--text-primary)' : 'var(--text-muted)',
-              fontWeight: currentPath === '/terms' ? 600 : 400,
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-            }}
-          >
-            Terms
-          </button>
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
