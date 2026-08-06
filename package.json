@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n \"ui,api\" -c \"cyan,magenta\" \"npm run dev:ui\" \"npm run dev:api\"",
-    "dev:ui": "node node_modules/vite/bin/vite.js",
-    "dev:api": "node -e \"import('fs').then(fs => fs.mkdirSync('dist', {recursive: true}))\" && node node_modules/wrangler/bin/wrangler.js dev src/api/index.ts --port 8787",
-    "build": "node node_modules/vite/bin/vite.js build",
-    "preview": "node node_modules/vite/bin/vite.js preview",
+    "dev:ui": "vite",
+    "dev:api": "node -e \"import('fs').then(fs => fs.mkdirSync('dist', {recursive: true}))\" && wrangler dev src/api/index.ts --port 8787",
+    "build": "vite build",
+    "preview": "vite preview",
     "setup": "node scripts/setup.js",
-    "branch-deploy": "node node_modules/@idpflare/cf-branch-wrangler/bin/index.js && node node_modules/wrangler/bin/wrangler.js deploy src/api/index.ts",
-    "deploy": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --remote && node node_modules/wrangler/bin/wrangler.js deploy src/api/index.ts",
-    "db:migrate:local": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --local",
-    "db:migrate:prod": "node node_modules/wrangler/bin/wrangler.js d1 migrations apply microsaas-db --remote"
+    "branch-deploy": "cf-branch-wrangler && wrangler deploy src/api/index.ts",
+    "deploy": "wrangler d1 migrations apply microsaas-db --remote && wrangler deploy src/api/index.ts",
+    "db:migrate:local": "wrangler d1 migrations apply microsaas-db --local",
+    "db:migrate:prod": "wrangler d1 migrations apply microsaas-db --remote"
   },
   "dependencies": {
     "hono": "^4.7.0",
