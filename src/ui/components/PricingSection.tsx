@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 import { BRANDING } from '../../config/branding';
+import { PRICING_CONFIG } from '../../config/pricing';
 
 interface PricingSectionProps {
   onNavigate: (path: string) => void;
@@ -22,26 +23,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onNavigate, show
   };
 
   const [currency, setCurrency] = useState<'USD' | 'AUD'>(detectInitialCurrency);
-
-  // Currency pricing amounts
-  const prices = {
-    USD: {
-      symbol: '$',
-      code: 'USD',
-      basic: '9',
-      trial: '1',
-      perpetual: '149',
-    },
-    AUD: {
-      symbol: '$',
-      code: 'AUD',
-      basic: '14',
-      trial: '1.50',
-      perpetual: '229',
-    },
-  };
-
-  const currentPrices = prices[currency];
+  const currentPrices = PRICING_CONFIG[currency];
 
   return (
     <div style={{ width: '100%' }}>
@@ -140,11 +122,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onNavigate, show
 
           <div style={{ marginBottom: '1.5rem' }}>
             <span style={{ fontSize: '2.5rem', fontWeight: 800 }}>{currentPrices.symbol}{currentPrices.trial}</span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}> {currentPrices.code} trial, then {currentPrices.symbol}{currentPrices.basic} / mo</span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}> {currentPrices.code} first month</span>
           </div>
 
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem', fontSize: '0.875rem' }}>
-            {['Feature 1', 'Feature 2', 'Feature 3'].map((feat, idx) => (
+            {[
+              `${currentPrices.symbol}${currentPrices.trial} for the first month!`,
+              `${currentPrices.symbol}${currentPrices.trialThereafter} Thereafter`,
+              'Same features as Basic',
+            ].map((feat, idx) => (
               <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                 <Check size={16} color="var(--accent)" />
                 <span>{feat}</span>
@@ -170,7 +156,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onNavigate, show
           </div>
 
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem', fontSize: '0.875rem' }}>
-            {['Feature 1', 'Feature 2', 'Feature 3'].map((feat, idx) => (
+            {[
+              'Pay once, use forever (*)',
+              'No ongoing subscription fee',
+              'Same features as Basic',
+            ].map((feat, idx) => (
               <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                 <Check size={16} color="var(--accent)" />
                 <span>{feat}</span>
