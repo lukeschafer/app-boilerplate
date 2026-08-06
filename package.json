@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -n \"ui,api\" -c \"cyan,magenta\" \"npm run dev:ui\" \"npm run dev:api\"",
     "dev:ui": "node node_modules/vite/bin/vite.js",
-    "dev:api": "node node_modules/wrangler/bin/wrangler.js dev src/api/index.ts --port 8787",
+    "dev:api": "node -e \"import('fs').then(fs => fs.mkdirSync('dist', {recursive: true}))\" && node node_modules/wrangler/bin/wrangler.js dev src/api/index.ts --port 8787",
     "build": "node node_modules/vite/bin/vite.js build",
     "preview": "node node_modules/vite/bin/vite.js preview",
     "setup": "node scripts/setup.js",
