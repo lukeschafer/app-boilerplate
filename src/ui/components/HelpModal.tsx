@@ -57,8 +57,8 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose, currentUs
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay">
+      <div className="modal-content">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
           <div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Contact Support</h3>

@@ -41,13 +41,8 @@ export const Turnstile: React.FC<TurnstileProps> = ({ onVerify }) => {
   }, [onVerify]);
 
   return (
-    <div className="turnstile-container" style={{ margin: '1rem 0' }}>
+    <div className="turnstile-container" style={{ margin: '0.5rem 0' }}>
       <div ref={containerRef} />
-      {BRANDING.turnstileSiteKey === '1x00000000000000000000AA' && (
-        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          Security Verification (Turnstile Test Mode Active)
-        </div>
-      )}
     </div>
   );
 };
