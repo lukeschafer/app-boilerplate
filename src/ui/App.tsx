@@ -11,21 +11,15 @@ import { DashboardPage } from './pages/DashboardPage';
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
-  const [themeMode, setThemeMode] = useState<'light' | 'dark'>(BRANDING.defaultMode);
+  const [themeMode] = useState<'light' | 'dark'>(BRANDING.defaultMode);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
-  const [currentUser] = useState<{ id: string; name: string; email: string } | null>({
-    id: 'usr_881902',
-    name: 'Luke Schafer',
-    email: 'luke@example.com',
-  });
+  
+  // Default user state is strictly null (logged out)
+  const [currentUser, setCurrentUser] = useState<{ id: string; name: string; email: string } | null>(null);
 
   useEffect(() => {
     applyTheme(BRANDING.paletteId, themeMode);
   }, [themeMode]);
-
-  const handleToggleTheme = () => {
-    setThemeMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   const handleNavigate = (path: string) => {
     setCurrentPath(path);
@@ -39,16 +33,38 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const handleLogin = () => {
+    // Simulated OIDC authentication callback
+    setCurrentUser({
+      id: 'usr_' + Math.random().toString(36).substring(2, 9),
+      name: 'Authenticated User',
+      email: 'user@example.com',
+    });
+    handleNavigate('/dashboard');
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    handleNavigate('/');
+  };
+
   const renderPage = () => {
     switch (currentPath) {
       case '/pricing':
         return <PricingPage onNavigate={handleNavigate} />;
       case '/privacy':
-        return <PrivacyPage />;
+        return <PrivacyPage currentUser={currentUser} />;
       case '/terms':
         return <TermsPage />;
       case '/dashboard':
-        return <DashboardPage currentUser={currentUser} onOpenHelp={() => setIsHelpOpen(true)} />;
+        return (
+          <DashboardPage
+            currentUser={currentUser}
+            onOpenHelp={() => setIsHelpOpen(true)}
+            onLogin={handleLogin}
+            onLogout={handleLogout}
+          />
+        );
       case '/':
       default:
         return <LandingPage onNavigate={handleNavigate} onOpenHelp={() => setIsHelpOpen(true)} />;
@@ -60,10 +76,9 @@ export const App: React.FC = () => {
       <Navbar
         currentPath={currentPath}
         onNavigate={handleNavigate}
-        themeMode={themeMode}
-        onToggleTheme={handleToggleTheme}
         onOpenHelp={() => setIsHelpOpen(true)}
         currentUser={currentUser}
+        onLogin={handleLogin}
       />
 
       <main style={{ flex: 1, padding: '0 1.5rem' }}>{renderPage()}</main>
