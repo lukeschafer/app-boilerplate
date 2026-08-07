@@ -8,14 +8,23 @@ import { PricingPage } from './pages/PricingPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { CallbackPage } from './pages/CallbackPage';
+import { initiateOidcLogin } from './lib/oidc';
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
   const [themeMode] = useState<'light' | 'dark'>(BRANDING.defaultMode);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   
-  // Default user state is strictly null (logged out)
-  const [currentUser, setCurrentUser] = useState<{ id: string; name: string; email: string } | null>(null);
+  // Restore authenticated session from localStorage if present, else null (logged out)
+  const [currentUser, setCurrentUser] = useState<{ id: string; name: string; email: string } | null>(() => {
+    try {
+      const saved = localStorage.getItem('auth_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
 
   useEffect(() => {
     applyTheme(BRANDING.paletteId, themeMode);
@@ -35,6 +44,9 @@ export const App: React.FC = () => {
         break;
       case '/dashboard':
         document.title = `Dashboard - ${BRANDING.appName}`;
+        break;
+      case '/auth/callback':
+        document.title = `Authenticating - ${BRANDING.appName}`;
         break;
       case '/':
       default:
@@ -56,16 +68,19 @@ export const App: React.FC = () => {
   }, []);
 
   const handleLogin = () => {
-    // Simulated OIDC authentication callback
-    setCurrentUser({
-      id: 'usr_' + Math.random().toString(36).substring(2, 9),
-      name: 'Authenticated User',
-      email: 'user@example.com',
+    // Initiate real OIDC PKCE Authorization Redirect to Identity Provider
+    initiateOidcLogin().catch((err) => {
+      console.error('OIDC login initiation failed:', err);
     });
-    handleNavigate('/dashboard');
+  };
+
+  const handleOidcSuccess = (user: { id: string; name: string; email: string }) => {
+    localStorage.setItem('auth_user', JSON.stringify(user));
+    setCurrentUser(user);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('auth_user');
     setCurrentUser(null);
     handleNavigate('/');
   };
@@ -87,6 +102,8 @@ export const App: React.FC = () => {
             onLogout={handleLogout}
           />
         );
+      case '/auth/callback':
+        return <CallbackPage onSuccess={handleOidcSuccess} onNavigate={handleNavigate} />;
       case '/':
       default:
         return <LandingPage onNavigate={handleNavigate} onOpenHelp={() => setIsHelpOpen(true)} />;
