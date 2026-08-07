@@ -35,7 +35,7 @@ The setup wizard will prompt for:
 1. Application Name & Domain
 2. Target Support Email
 3. Color Palette selection & Default Mode (light/dark)
-4. Cloudflare Turnstile keys (press Enter to keep dev testing keys)
+4. Cloudflare Turnflare keys (press Enter to keep dev testing keys)
 5. Automatically creates Cloudflare D1 database and runs local migrations.
 
 ### 3. Local Development
@@ -59,11 +59,13 @@ Create a new OIDC Client Application with the following settings:
 | :--- | :--- | :--- |
 | **Application Type** | Single Page Application (SPA) | Single Page Application (SPA) |
 | **Grant Type** | Authorization Code (`authorization_code`) | Authorization Code (`authorization_code`) |
-| **Auth Method** | PKCE (`S256`) | PKCE (`S256`) |
+| **Auth Method** | PKCE (`S256`) - **No Client Secret** | PKCE (`S256`) - **No Client Secret** |
 | **Response Type** | `code` | `code` |
 | **Redirect URI** | `https://<your-domain>/auth/callback` | `http://localhost:5173/auth/callback` |
 | **Post-Logout Redirect URI** | `https://<your-domain>/` | `http://localhost:5173/` |
 | **Allowed Scopes** | `openid profile email` | `openid profile email` |
+
+> **Security Note on Client Secrets**: You do **NOT** need a client secret. Single Page Applications (SPAs) run publicly in user web browsers where secrets cannot be safely kept. Instead, OAuth 2.0 / OIDC uses **PKCE (Proof Key for Code Exchange with S256)**, where the browser dynamically generates cryptographic verifiers for each login request.
 
 ### 2. Required Scopes & Claims
 
