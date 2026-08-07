@@ -74,6 +74,17 @@ export const App: React.FC = () => {
     });
   };
 
+  const handleDevLogin = () => {
+    const devUser = {
+      id: 'usr_dev_' + Math.random().toString(36).substring(2, 8),
+      name: 'Demo Developer',
+      email: 'dev@example.com',
+    };
+    localStorage.setItem('auth_user', JSON.stringify(devUser));
+    setCurrentUser(devUser);
+    handleNavigate('/dashboard');
+  };
+
   const handleOidcSuccess = (user: { id: string; name: string; email: string }) => {
     localStorage.setItem('auth_user', JSON.stringify(user));
     setCurrentUser(user);
@@ -103,7 +114,13 @@ export const App: React.FC = () => {
           />
         );
       case '/auth/callback':
-        return <CallbackPage onSuccess={handleOidcSuccess} onNavigate={handleNavigate} />;
+        return (
+          <CallbackPage
+            onSuccess={handleOidcSuccess}
+            onNavigate={handleNavigate}
+            onDevLogin={handleDevLogin}
+          />
+        );
       case '/':
       default:
         return <LandingPage onNavigate={handleNavigate} onOpenHelp={() => setIsHelpOpen(true)} />;
