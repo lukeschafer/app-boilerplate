@@ -8,9 +8,9 @@ A Cloudflare-native boilerplate framework for launching microSaaS applications b
 
 - **Edge Architecture**: Runs 100% on Cloudflare Workers and D1 database.
 - **Single Source Branding**: Single configuration file (`src/config/branding.ts`) controls app identity, domain, support email, color palette, and default theme mode.
-- **5 Curated Color Palettes**: Light and Dark mode design system tokens (Slate/Indigo, Emerald/Mint, Obsidian/Steel, Sunset/Amber, Oceanic/Teal).
+- **5 Curated Color Palettes**: Light and Dark mode design system tokens (Slate/Indigo, Slate/Sapphire, Slate/Emerald, Slate/Amber, Slate/Violet).
 - **Zero AI-isms**: Clean UI using Lucide icons, Inter/Outfit typography, and zero emoji clutter.
-- **Support & Helpdesk**: Integrated help Modal pre-filling authenticated user identity and dispatching support emails via Cloudflare Email Sending.
+- **Support & Helpdesk**: Integrated help modal pre-filling authenticated user identity and dispatching support emails via Cloudflare Email Sending.
 - **Cloudflare Turnstile Security**: Client-side widget rendering and server-side token validation, with automatic fallback testing keys for local dev and preview branch builds.
 - **Branch Deployments**: `@idpflare/cf-branch-wrangler` integration (`npm run branch-deploy`) for automatic preview environment provisioning.
 - **IDPFlare Single Sign-On**: Step-by-step setup guide (`idpflare.md`) for self-hosting IDPFlare OIDC servers on Cloudflare Workers.
@@ -48,6 +48,41 @@ Starts concurrent development servers:
 
 ---
 
+## Identity Provider (OIDC / IDP) Setup Guide
+
+To configure single sign-on (SSO) authentication using **IDPFlare** (or any standard OIDC provider like Auth0, Okta, Keycloak):
+
+### 1. Register Client Application in IDP Dashboard
+Create a new OIDC Client Application with the following settings:
+
+| Setting | Production Value | Local Development Value |
+| :--- | :--- | :--- |
+| **Application Type** | Single Page Application (SPA) | Single Page Application (SPA) |
+| **Grant Type** | Authorization Code (`authorization_code`) | Authorization Code (`authorization_code`) |
+| **Auth Method** | PKCE (`S256`) | PKCE (`S256`) |
+| **Response Type** | `code` | `code` |
+| **Redirect URI** | `https://<your-domain>/auth/callback` | `http://localhost:5173/auth/callback` |
+| **Post-Logout Redirect URI** | `https://<your-domain>/` | `http://localhost:5173/` |
+| **Allowed Scopes** | `openid profile email` | `openid profile email` |
+
+### 2. Required Scopes & Claims
+
+- **`openid`**: Required. Initiates OIDC flow and yields `id_token` and `sub` (unique user identifier).
+- **`profile`**: Required. Claims user display details (`name`, `given_name`, `family_name`, `picture`).
+- **`email`**: Required. Claims user contact details (`email`, `email_verified`).
+
+### 3. Configure Client Credentials in Branding
+Update `src/config/branding.ts` with your registered OIDC Client ID and Issuer URL:
+```ts
+export const BRANDING: BrandingConfig = {
+  // ...
+  oidcClientId: 'your-app-client-id',
+  oidcIssuerUrl: 'https://idpflare.com', // or your self-hosted IDPFlare Workers URL
+};
+```
+
+---
+
 ## Project Structure
 
 ```
@@ -57,12 +92,14 @@ Starts concurrent development servers:
 ├── migrations/
 │   └── 0000_initial.sql           # D1 SQL Database Migrations
 ├── scripts/
+│   ├── create-app.ps1             # PowerShell script to provision new app repos
 │   └── setup.js                   # Interactive CLI setup wizard
 ├── src/
 │   ├── api/                       # Worker API (Hono)
-│   ├── config/                    # Single-source branding config (branding.ts)
+│   ├── config/                    # Single-source branding & pricing config
 │   ├── theme/                     # Palettes & CSS Design System
 │   └── ui/                        # React Frontend (Vite SPA)
+├── create-app.ps1                 # App provisioner script
 ├── idpflare.md                    # IDPFlare self-hosting & setup guide
 ├── wrangler.jsonc                 # Cloudflare Worker configuration
 └── vite.config.ts                 # Vite config with API proxy
