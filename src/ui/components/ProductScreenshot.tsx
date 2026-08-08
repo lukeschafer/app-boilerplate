@@ -127,7 +127,7 @@ export const ProductScreenshot: React.FC = () => {
                 key={idx}
                 style={{
                   display: 'flex',
-                  justify: 'space-between',
+                  justifyContent: 'space-between',
                   padding: '0.5rem 0.75rem',
                   backgroundColor: 'var(--bg-primary)',
                   borderRadius: 'var(--radius-sm)',

@@ -8,7 +8,7 @@ A Cloudflare-native boilerplate framework for launching microSaaS applications b
 
 - **Edge Architecture**: Runs 100% on Cloudflare Workers and D1 database.
 - **Single Source Branding**: Single configuration file (`src/config/branding.ts`) controls app identity, domain, support email, color palette, and default theme mode.
-- **5 Curated Color Palettes**: Light and Dark mode design system tokens (Slate/Indigo, Slate/Sapphire, Slate/Emerald, Slate/Amber, Slate/Violet).
+- **15 Curated Color Palettes**: Light and Dark mode design system tokens across Slate and non-Slate base options (Indigo, Sapphire, Emerald, Amber, Violet, Rose, Cyan, Coral, Zinc/Purple, Midnight/Sky, Sandstone/Amber, Charcoal/Teal, Obsidian/Ruby, Nordic/Frost, Plum/Fuchsia).
 - **Zero AI-isms**: Clean UI using Lucide icons, Inter/Outfit typography, and zero emoji clutter.
 - **Support & Helpdesk**: Integrated help modal pre-filling authenticated user identity and dispatching support emails via Cloudflare Email Sending.
 - **Cloudflare Turnstile Security**: Client-side widget rendering and server-side token validation, with automatic fallback testing keys for local dev and preview branch builds.

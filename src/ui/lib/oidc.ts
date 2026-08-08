@@ -82,7 +82,7 @@ export async function handleOidcCallback(code: string, state: string): Promise<{
     }),
   });
 
-  const tokenData = await tokenRes.json();
+  const tokenData = await tokenRes.json() as any;
   if (!tokenRes.ok) {
     throw new Error(tokenData.error_description || tokenData.error || 'Token exchange failed');
   }
@@ -98,7 +98,7 @@ export async function handleOidcCallback(code: string, state: string): Promise<{
         headers: { Authorization: `Bearer ${tokenData.access_token}` },
       });
       if (userRes.ok) {
-        const userInfo = await userRes.json();
+        const userInfo = await userRes.json() as any;
         return {
           id: userInfo.sub || userInfo.id || 'usr_' + Math.random().toString(36).substring(2, 9),
           name: userInfo.name || userInfo.email?.split('@')[0] || 'Authenticated User',
